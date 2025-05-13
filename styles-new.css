@@ -73,6 +73,7 @@ header {
 
 .login-signup-button {
   border-radius: 100px;
+  border: none;
   background: linear-gradient(59deg, #da605f -3.07%, #fcae00 110.32%);
   padding: 12px 20px;
   color: white;
@@ -277,7 +278,6 @@ header {
   min-width: 0;
   padding: 64px 0px;
   box-sizing: border-box;
-
 }
 
 /* Image styling */
@@ -287,7 +287,6 @@ header {
   display: inline-block;
   object-fit: cover;
   border-radius: 12px;
-
 }
 
 .footer {
@@ -317,16 +316,21 @@ header {
   }
 }
 
-
 /* Closet */
 
 .closet-cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
+  /* Masonry layout for Pinterest effect */
+  column-count: 2;
+  column-gap: 10px;
   margin: 40px;
-  align-items: start;
-  justify-items: start;
+}
+
+.closet-card,
+.add-item-card {
+  break-inside: avoid;
+  margin-bottom: 10px;
+  width: 100%;
+  display: block;
 }
 
 .closet-card {
@@ -336,7 +340,7 @@ header {
 
 .closet-card-image {
   border-radius: 16px;
-  border: 1px solid #F0F0F0;
+  border: 1px solid #f0f0f0;
   background-color: transparent;
   padding: 0;
   display: block;
@@ -351,17 +355,56 @@ header {
 }
 
 .add-item-card {
-  border: 1.5px solid var(--SubtleLinear, #EFA8A0);
-  color: var(--SubtleLinear, #EFA8A0);
+  border: 1.5px solid var(--SubtleLinear, #efa8a0);
+  color: var(--SubtleLinear, #efa8a0);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 16px;
-  padding: 16px;
-  height: auto;
-  max-width: 140px;
-  margin: 0 auto;
+  padding: 36px;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.filters-buttons {
+  margin: auto;
+}
+
+.filter-active {
+  background: var(--Revivle-Brand-BrandColor, #d89545);
+  border: 1px solid var(--Revivle-Brand-BrandColor, #d89545);
+  color: white;
+}
+
+.filter-inactive {
+  background: white;
+  color: #667085;
+  border: 1px solid #eaeaea;
+}
+.filters-button {
+  margin: auto;
+  border-radius: 24px;
+  height: 40px;
+  padding: 12px 16px;
+}
+
+@media (min-width: 700px) {
+  .closet-cards-container {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1000px) {
+  .closet-cards-container {
+    column-count: 4;
+    column-gap: 5px;
+  }
 }
 
 /* Media query: change layout at 1024px */
@@ -448,3 +491,30 @@ header {
   }
 }
 
+.sticky-footer {
+  display: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 62px;
+  background: #fff;
+  box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 10000;
+}
+
+.sticky-footer svg {
+  width: 33px;
+  height: 32px;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .sticky-footer {
+    display: flex;
+  }
+}
