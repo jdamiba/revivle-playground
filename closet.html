@@ -248,52 +248,24 @@
     </header>
 
     <div class="closet-cards-container">
-      <div class="closet-card">
-        <div>
-          <img class="closet-card-image" src="images/image6.png" alt="Closet Card 1">
-        </div>
-        <div class="closet-card-text">
-          <p>Anthropologie Black overall Medium</p>
-        </div>
+      <div class="add-item-card">
+          <p>Add an item</p>
+          <div>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_930_4652)">
+                <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="#FFC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11 16H21" stroke="#FFC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 11V21" stroke="#FFC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_930_4652">
+                  <rect width="32" height="32" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+         
       </div>
-
-      <div class="closet-card">
-        <div>
-          <img class="closet-card-image" src="images/image7.webp" alt="Closet Card 1">
-        </div>
-        <div class="closet-card-text">
-          <p>Anthropologie Black overall Medium</p>
-        </div>
-      </div>
-
-      <div class="closet-card">
-        <div>
-          <img class="closet-card-image" src="images/image8.webp" alt="Closet Card 1">
-        </div>
-        <div class="closet-card-text">
-          <p>Anthropologie Black overall Medium</p>
-        </div>
-      </div>
-
-      <div class="closet-card">
-        <div>
-          <img class="closet-card-image" src="images/image10.jpg" alt="Closet Card 1">
-        </div>
-        <div class="closet-card-text">
-          <p>Anthropologie Black overall Medium</p>
-        </div>
-      </div>
-
-      <div class="closet-card">
-        <div>
-          <img class="closet-card-image" src="images/image11.png" alt="Closet Card 1">
-        </div>
-        <div class="closet-card-text">
-          <p>Anthropologie Black overall Medium</p>
-        </div>
-      </div>
-
-
       <div class="closet-card">
         <div>
           <img class="closet-card-image" src="images/image1.png" alt="Closet Card 1">
@@ -302,6 +274,7 @@
           <p>Anthropologie Black overall Medium</p>
         </div>
       </div>
+
       <div class="closet-card">
         <div>
           <img class="closet-card-image" src="images/image2.png" alt="Closet Card 1">
@@ -310,6 +283,7 @@
           <p>COS Alpaca Blend Knit Sweater Size Small</p>
         </div>
       </div>
+
       <div class="closet-card">
         <div>
           <img class="closet-card-image" src="images/image3.png" alt="Closet Card 1">
@@ -318,6 +292,7 @@
           <p>Allbirds tree skippers sz 7.5</p>
         </div>
       </div>
+
       <div class="closet-card">
         <div>
           <img class="closet-card-image" src="images/image4.png" alt="Closet Card 1">
@@ -326,6 +301,7 @@
           <p>Nike gray women's workout top medium</p>
         </div>
       </div>
+
       <div class="closet-card">
         <div>
           <img class="closet-card-image" src="images/image5.png" alt="Closet Card 1">
@@ -334,6 +310,7 @@
           <p>Nike gray women's workout top medium</p>
         </div>
       </div>
+
       <div class="closet-card">
         <div>
           <img class="closet-card-image" src="images/image6.png" alt="Closet Card 1">
@@ -342,6 +319,7 @@
           <p>Allbirds tree skippers sz 7.5</p>
         </div>
       </div>
+
       <div class="closet-card">
         <div>
           <img class="closet-card-image" src="images/image1.png" alt="Closet Card 1">
@@ -417,3 +395,49 @@
     <a href="#">Contact Us</a>
   </footer>
 </html>
+
+<style>
+  .select-circle {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #da605f;
+    border: 2px solid #da605f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    font-size: 18px;
+    color: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    user-select: none;
+    pointer-events: none;
+  }
+  .closet-card {
+    position: relative;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.closet-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      // Prevent toggling if clicking a button or link inside the card
+      if (e.target.closest('button,a')) return;
+      card.classList.toggle('selected');
+      // Remove any existing select-circle
+      let circle = card.querySelector('.select-circle');
+      if (circle) circle.remove();
+      // If selected, add the select-circle
+      if (card.classList.contains('selected')) {
+        circle = document.createElement('div');
+        circle.className = 'select-circle';
+        circle.innerHTML = '&#10003;';
+        card.prepend(circle);
+      }
+    });
+  });
+</script>
