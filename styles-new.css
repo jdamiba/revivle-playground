@@ -299,8 +299,8 @@ header {
   display: flex;
   flex-direction: row;
   height: 168px;
-  padding: 10px;
   font-weight: 700;
+  padding-bottom: 50px;
   justify-content: center;
   align-items: center;
   gap: 60px;
